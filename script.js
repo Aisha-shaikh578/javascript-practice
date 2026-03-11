@@ -13,6 +13,16 @@ function renderNote(notesObj) {
     notesObj.content = newNoteEl.value;
     saveNote();
   })
+
+  newNoteEl.addEventListener('dblclick' , () => {
+    const warning = confirm('Do you want to delete this note?');
+
+    if(warning) {
+      newNoteEl.remove();
+      notesArr = notesArr.filter(notes => notes.id !== notesObj.id);
+      saveNote();
+    }
+  })
   notesDiv.insertBefore(newNoteEl, btn);
 }
 
